@@ -17,4 +17,4 @@ It will be used in my own discord server [Exerax Discord](https://discord.gg/A8J
 
 # Project License
 
-The project is lincesed under **MIT License**! Copy my work / re-writting it and use of my work for your own profit is not allowed. You can use the bot but selling it for your own.
+The project is lincesed under **MIT License**! Copy my work / re-writting it and use of my work for your own profit is not allowed. You can use the bot but not sell it for your own.
