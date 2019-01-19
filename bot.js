@@ -21,7 +21,7 @@ client.on("message", function (message) {
   if (message.author == client.user) {
     return
 }
-if (message.content.startsWith("!")) {
+if (message.content.startsWith(config.prefix)) {
   processCommand(message)
 }});
 
