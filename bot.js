@@ -1,58 +1,76 @@
-var Discord = require('discord.io');
-var logger = require('winston');
-var auth = require('./auth.json');
-// Configure logger settings
+const Discord = require('discord.js');
+const command = require('discord.js-commando');
+const config = require('./config.json');
+const logger = require('winston');
+//Logger Settings Configured
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, { colorize: true });
 logger.level = 'debug';
-// Initialize Discord Bot
-var bot = new Discord.Client({
-   token: auth.token,
-   autorun: true
+//Initialize Discord Bot
+const client = new Discord.Client({
+  token: config.token,
+  prefix: config.prefix,
+  autorun:true
 });
-bot.on('ready', function (evt) {
-    logger.info('Connected');
-    logger.info('Logged in as: Exerax Official');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+client.on("ready", function (exe) {
+  logger.info(`${client.user.username} is connected`);
+  logger.info(`logged in as: ${client.user.username}`);
+  logger.info(client.user.setActivity("Coding Exerax Official"));
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
-    // Our bot needs to know if it will execute a command
-    // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
+client.on("message", function (message) {
+  if (message.author == client.user) {
+    return
+}
+if (message.content.startsWith("!")) {
+  processCommand(message)
+}});
 
-        args = args.splice(1);
-        switch(cmd) {
-            // !ping
-            case 'ping':
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Pong!'
-                });
-            break;
-            // Just add any case commands if you want to..
-         }
-     }
-});
+function processCommand(message) {
+    let fullCommand = message.content.substr(1) // Remove the leading exclamation mark
+    let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
+    let primaryCommand = splitCommand[0] // The first word directly after the exclamation is the command
+    let arguments = splitCommand.slice(1) // All other words are arguments/parameters/options for the command
 
-bot.on('message', function (user, userID, channelID, message, evt) {
-    // Our bot needs to know if it will execute a command
-    // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
+    console.log("Command received: " + primaryCommand)
+    console.log("Arguments: " + arguments) // There may not be any arguments
 
-        args = args.splice(1);
-        switch(cmd) {
-            // !ping
-            case 'help':
-                bot.sendMessage({
-                    to: author,
-                    message: 'Laws & Server Rules: https://club.exerax.com/community/forum/rules-guidelines/'
-                });
-            break;
-            // Just add any case commands if you want to..
-         }
-     }
-});
+    if (primaryCommand == "help") {
+        helpCommand(arguments, message)
+    }
+};
+
+function helpCommand(arguments, message) {
+  message.channel.send({embed: {
+  color: 3447003,
+  author: {
+    name: client.user.username,
+    icon_url: client.user.avatarURL
+  },
+  title: "User guidelines",
+  url: "https://club.exerax.com/",
+  description: "User guidelines, Rules, Laws & legimiate information",
+  fields: [{
+    name: "Rules",
+    value: "You can access the rules on: http://bit.ly/exerax-rules"
+  },
+  {
+    name: "Law Handbook",
+    value: "The Law handbook is not mandatory but optional. It can be found on: http://bit.ly/exerax-law"
+  },
+  {
+    name: "MET Police Academy",
+    value: "To apply for being part of the MET Police force: http://bit.ly/met-academy"
+  },
+  {
+    name: "NHS Academy",
+    value: "To apply for being part of the NHS, work as a paramedic/nurse/doctor etc: http://bit.ly/nhs-apply"
+  }
+],
+timestamp: new Date(),
+footer: {
+  icon_url: client.user.avatarURL,
+  text: "© Exerax Official"
+}
+}})
+};
+client.login(config.token);
