@@ -33,6 +33,17 @@ function processCommand(message) {
     }
 };
 
+// On user joining the server assign Civilian role
+client.on('guildMemberAdd', member => {
+  console.log('User' + member.username + ' has joined the community'); // < print a console message on user joining.
+
+  // Get the specified role
+  var role = member.roles.find('name', 'Civilian');
+
+  // Add the role
+  member.addRole(role);
+});
+
 function helpCommand(arguments, message) {
   message.channel.send({embed: {
   color: 3447003,
@@ -67,21 +78,4 @@ footer: {
 }
 }})
 };
-
-client.on('message', async message => {
-  if (message.author.bot) returnl;
-  if (message.content.toLowerCase() == '!verify' && message.channel.id === '578288248116477962')
-  {
-    const role = message.guild.roles.cache.get('579055846718308353');
-    if (role) {
-      try {
-        await message.member.roles.add(role);
-        console.log('Role Added');
-      }
-      catch (err) {
-        console.log(err);
-      }
-    }
-  }
-})
 client.login(config.token);
