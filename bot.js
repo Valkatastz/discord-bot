@@ -1,21 +1,23 @@
 const Discord = require('discord.js');
-const command = require('discord.js-commando');
+// const command = require('discord.js-commando');
 const config = require('./config.json');
-const logger = require('winston');
+// const logger = require('winston');
 //Logger Settings Configured
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console, { colorize: true });
-logger.level = 'debug';
+// logger.remove(logger.transports.Console);
+// logger.add(new logger.transports.Console, { colorize: true });
+// logger.level = 'debug';
 //Initialize Discord Bot
 const client = new Discord.Client({
+  name: config.name,
+  version: config.version,
   token: config.token,
   prefix: config.prefix,
   autorun:true
 });
 client.on("ready", function (exe) {
-  logger.info(`${client.user.username} is connected`);
-  logger.info(`logged in as: ${client.user.username}`);
-  logger.info(client.user.setActivity("Coding Exerax Official"));
+  console.log(`${client.user.username} is connected`);
+  console.log(`logged in as: ${client.user.username}`);
+  console.log(client.user.setActivity("Coding Exerax Official"));
 });
 client.on("message", function (message) {
   if (message.author == client.user) {
@@ -58,12 +60,12 @@ function helpCommand(arguments, message) {
     value: "The Law handbook is not mandatory but optional. It can be found on: http://bit.ly/exerax-law"
   },
   {
-    name: "MET Police Academy",
-    value: "To apply for being part of the MET Police force: http://bit.ly/met-academy"
+    name: "LAPD Academy",
+    value: "To apply for being part of the LAPD force: http://bit.ly/met-academy"
   },
   {
-    name: "NHS Academy",
-    value: "To apply for being part of the NHS, work as a paramedic/nurse/doctor etc: http://bit.ly/nhs-apply"
+    name: "LAFD Academy",
+    value: "To apply for being part of the LAFD, work as a paramedic/nurse/doctor etc: http://bit.ly/nhs-apply"
   }
 ],
 timestamp: new Date(),

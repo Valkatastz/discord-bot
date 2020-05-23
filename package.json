@@ -23,11 +23,9 @@
   },
   "homepage": "https://github.com/ExeraxInc/discord-bot#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "commando": "0.0.2",
+    "axios": "^0.18.1",
     "discord.io": "^2.5.3",
-    "discord.js": "^11.4.2",
-    "discord.js-commando": "^0.10.0",
-    "winston": "^3.1.0"
+    "discord.js": "^11.6.4",
+    "discord.js-commando": "^0.10.0"
   }
 }
