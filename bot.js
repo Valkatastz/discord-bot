@@ -37,7 +37,7 @@ function processCommand(message) {
 // On user joining the server assign Civilian role
 client.on('guildMemberAdd',function(member) {
   const mem = member.guild.member(member.id)
-  console.log(mem + 'has joined the community.'); // < print a console message on user joining.
+  console.log(mem + ' has joined the community.'); // < print a console message on user joining.
 
   // Get the specified role
   var role = member.guild.roles.get(config.roleid);
@@ -47,7 +47,7 @@ client.on('guildMemberAdd',function(member) {
   }
   else {
     member.addRole(role);
-    console.log(mem + 'has been granted with a role of Civilian.');
+    console.log(mem + ' has been granted with a role of Civilian.');
   }
 });
 
