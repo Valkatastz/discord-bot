@@ -67,4 +67,21 @@ footer: {
 }
 }})
 };
+
+client.on('message', async message => {
+  if (message.author.bot) returnl;
+  if (message.content.toLowerCase() == '!verify' && message.channel.id === '578288248116477962')
+  {
+    const role = message.guild.roles.cache.get('579055846718308353');
+    if (role) {
+      try {
+        await message.member.roles.add(role);
+        console.log('Role Added');
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+  }
+})
 client.login(config.token);
