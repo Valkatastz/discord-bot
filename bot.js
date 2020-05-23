@@ -49,23 +49,23 @@ function helpCommand(arguments, message) {
     icon_url: client.user.avatarURL
   },
   title: "User guidelines",
-  url: "https://club.exerax.com/",
+  url: "Website Coming Soon",
   description: "User guidelines, Rules, Laws & legimiate information",
   fields: [{
     name: "Rules",
-    value: "You can access the rules on: http://bit.ly/exerax-rules"
+    value: "You can access the rules on: https://bit.ly/egn-rules"
   },
   {
     name: "Law Handbook",
-    value: "The Law handbook is not mandatory but optional. It can be found on: http://bit.ly/exerax-law"
+    value: "The Law handbook is not mandatory but optional. It can be found on: coming soon"
   },
   {
     name: "LAPD Academy",
-    value: "To apply for being part of the LAPD force: http://bit.ly/met-academy"
+    value: "To apply for being part of the LAPD force: coming soon"
   },
   {
     name: "LAFD Academy",
-    value: "To apply for being part of the LAFD, work as a paramedic/nurse/doctor etc: http://bit.ly/nhs-apply"
+    value: "To apply for being part of the LAFD, work as a paramedic/nurse/doctor etc: coming soon"
   }
 ],
 timestamp: new Date(),
