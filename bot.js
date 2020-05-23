@@ -40,7 +40,7 @@ client.on('guildMemberAdd',function(member) {
   console.log(mem + 'has joined the community.'); // < print a console message on user joining.
 
   // Get the specified role
-  var role = member.guild.roles.get("579055846718308353");
+  var role = member.guild.roles.get(config.roleid);
   // Add the role
   if(member.guild.roles.has(role)){
     console.log("The member is a Civilian.");
