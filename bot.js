@@ -20,6 +20,7 @@ if (message.content.startsWith(config.prefix)) {
   processCommand(message)
 }});
 
+//Function for command handler.
 function processCommand(message) {
     let fullCommand = message.content.substr(1) // Remove the leading exclamation mark
     let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space
@@ -29,21 +30,22 @@ function processCommand(message) {
     console.log("Command received: " + primaryCommand)
     console.log("Arguments: " + arguments) // There may not be any arguments
 
+    //Define the help command
     if (primaryCommand == "help") {
-        helpCommand(arguments, message)
+        helpCommand(arguments, message) // Get the function for the help command
     }
 };
 
 // On user joining the server assign Civilian role
 client.on('guildMemberAdd',function(member) {
-  const mem = member.guild.member(member.id)
+  const mem = member.guild.member(member.id) // Get the user id lately used for logging to log their ID.
   console.log(mem + ' has joined the community.'); // < print a console message on user joining.
 
   // Get the specified role
   var role = member.guild.roles.get(config.roleid);
   // Add the role
   if(member.guild.roles.has(role)){
-    console.log("The member is a Civilian.");
+    console.log("The member is a Civilian."); //< mostly never will be used but just for security checks to avoid overlaying and mistmatch do the check first.
   }
   else {
     member.addRole(role);
@@ -51,24 +53,26 @@ client.on('guildMemberAdd',function(member) {
   }
 });
 
+//Help command handler
 function helpCommand(arguments, message) {
-  let hEmbed = new Discord.RichEmbed()
-  .setColor(3447003)
-  .setTitle("Server Information")
-  .setAuthor(`${message.guild.name}`, message.guild.iconURL)
-  .setDescription(info.description)
-  .addField("**Owner**", `${info.owners + message.guild.owner}`, true)
-  .addField("**Rules**", `${info.rules}`, true)
-  .addField("**Law Handbook**", `${info.handbook}`, true)
-  .addField("**LAPD Academy**", `${info.lapdacademy}`, true)
-  .addField("**LAFD Academy**", `${info.lafdacademy}`, true)
-  .addField("**Dispatch**", `${info.dispatch}`, true)
-  .addField("**Realtor**", `${info.realtor}`, true)
-  .addField("**Members**", `${info.members + `**${message.guild.memberCount}**`}`, true)
-  .addField("**Jobs**", `${info.roles + `**${message.guild.roles.size}**`}`, true)
-  .setFooter(`${config.copyrights} • ${config.version}`, client.user.displayAvatarURL)
-  .setTimestamp(client.Date)
-  .setThumbnail(`${client.user.displayAvatarURL}`);
-  message.channel.send({embed: hEmbed});
+  let hEmbed = new Discord.RichEmbed() // declare the RichEmbed message function
+  .setColor(3447003) // set the color (light blue)
+  .setTitle("Server Information") // Title
+  .setAuthor(message.guild.name, message.guild.iconURL) // author icon and the name of it
+  .setDescription(info.description) // description
+  .addField(info.fowner, info.owners + message.guild.owner, true) // delcare the field and text for owner
+  .addField(info.frules, info.rules, true) // decalare the field and text for rules
+  .addField(info.flaw, info.handbook, true) // declare the field and text for law handbook 
+  .addField(info.flapd, info.lapdacademy, true) // declare the field and text for lapd academy
+  .addField(info.flafd, info.lafdacademy, true) // declare the field and text for lafd academy
+  .addField(info.fdispatch, info.dispatch, true) // declare the field and text for dispatch
+  .addField(info.frealtor, info.realtor, true) // declare the field and text for realtor
+  .addField(info.fmembers, info.members + `**${message.guild.memberCount}**`, true) // decalre the field and text for members in bold
+  .addField(info.fjobs, info.roles + `**${message.guild.roles.size}**`, true) // declare the field and text for number of jobs in bold
+  .setFooter(`${config.copyrights} • ${config.version}`, client.user.displayAvatarURL) // declare the copyrights, version of the bot and diplay the avatar in the footer
+  .setTimestamp(client.Date) // display the date in the footer
+  .setThumbnail(`${client.user.displayAvatarURL}`); // set the thumbnail in the right hand side
+  message.channel.send({embed: hEmbed}); // display the embedded message
 };
+
 client.login(config.token);
