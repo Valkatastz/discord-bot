@@ -1,6 +1,6 @@
 {
-  "name": "discord-bot",
-  "version": "1.0.0",
+  "name": "egn-bot",
+  "version": "1.2.1",
   "description": "Exerax Discord Bot",
   "main": "bot.js",
   "scripts": {
@@ -14,9 +14,10 @@
     "bot",
     "discord",
     "exerax",
-    "official"
+    "official",
+    "egn"
   ],
-  "author": "Exerax",
+  "author": "Lane Boy",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ExeraxInc/discord-bot/issues"
@@ -25,7 +26,6 @@
   "dependencies": {
     "axios": "^0.18.1",
     "discord.io": "^2.5.3",
-    "discord.js": "^11.6.4",
-    "discord.js-commando": "^0.10.0"
+    "discord.js": "^11.6.4"
   }
 }

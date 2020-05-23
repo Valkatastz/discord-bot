@@ -1,15 +1,7 @@
 const Discord = require('discord.js');
-// const command = require('discord.js-commando');
 const config = require('./config.json');
-// const logger = require('winston');
-//Logger Settings Configured
-// logger.remove(logger.transports.Console);
-// logger.add(new logger.transports.Console, { colorize: true });
-// logger.level = 'debug';
 //Initialize Discord Bot
 const client = new Discord.Client({
-  name: config.name,
-  version: config.version,
   token: config.token,
   prefix: config.prefix,
   autorun:true
