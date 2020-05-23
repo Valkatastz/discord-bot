@@ -39,7 +39,7 @@ client.on('guildMemberAdd', member => {
   console.log('User' + member.username + ' has joined the community'); // < print a console message on user joining.
 
   // Get the specified role
-  var role = member.roles.find('name', 'Civilian');
+  var role = member.guild.roles.find('name', 'Civilian');
 
   // Add the role
   member.addRole(role);
