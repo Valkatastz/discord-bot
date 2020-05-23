@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const config = require('./config.json');
+const info = require('./info.json');
 //Initialize Discord Bot
 const client = new Discord.Client({
   token: config.token,
@@ -45,37 +46,23 @@ client.on('guildMemberAdd', member => {
 });
 
 function helpCommand(arguments, message) {
-  message.channel.send({embed: {
-  color: 3447003,
-  author: {
-    name: client.user.username,
-    icon_url: client.user.avatarURL
-  },
-  title: "User guidelines",
-  url: "Website Coming Soon",
-  description: "User guidelines, Rules, Laws & legimiate information",
-  fields: [{
-    name: "Rules",
-    value: "You can access the rules on: https://bit.ly/egn-rules"
-  },
-  {
-    name: "Law Handbook",
-    value: "The Law handbook is not mandatory but optional. It can be found on: coming soon"
-  },
-  {
-    name: "LAPD Academy",
-    value: "To apply for being part of the LAPD force: coming soon"
-  },
-  {
-    name: "LAFD Academy",
-    value: "To apply for being part of the LAFD, work as a paramedic/nurse/doctor etc: coming soon"
-  }
-],
-timestamp: new Date(),
-footer: {
-  icon_url: client.user.avatarURL,
-  text: "© Exerax Official"
-}
-}})
+  let hEmbed = new Discord.RichEmbed()
+  .setColor(3447003)
+  .setTitle("Server Information")
+  .setAuthor(`${message.guild.name}`, message.guild.iconURL)
+  .setDescription(info.description)
+  .addField("**Owner**", `${info.owners + message.guild.owner}`, true)
+  .addField("**Rules**", `${info.rules}`, true)
+  .addField("**Law Handbook**", `${info.handbook}`, true)
+  .addField("**LAPD Academy**", `${info.lapdacademy}`, true)
+  .addField("**LAFD Academy**", `${info.lafdacademy}`, true)
+  .addField("**Dispatch**", `${info.dispatch}`, true)
+  .addField("**Realtor**", `${info.realtor}`, true)
+  .addField("**Members**", `${info.members + `**${message.guild.memberCount}**`}`, true)
+  .addField("**Jobs**", `${info.roles + `**${message.guild.roles.size}**`}`, true)
+  .setFooter(`${config.copyrights} • ${config.version}`, client.user.displayAvatarURL)
+  .setTimestamp(client.Date)
+  .setThumbnail(`${client.user.displayAvatarURL}`);
+  message.channel.send({embed: hEmbed});
 };
 client.login(config.token);
