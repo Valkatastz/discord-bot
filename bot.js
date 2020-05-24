@@ -71,7 +71,8 @@ function helpCommand(arguments, message) {
   .addField(info.fjobs, info.roles + `**${message.guild.roles.size}**`, true) // declare the field and text for number of jobs in bold
   .setFooter(`${config.copyrights} • ${config.version}`, client.user.displayAvatarURL) // declare the copyrights, version of the bot and diplay the avatar in the footer
   .setTimestamp(client.Date) // display the date in the footer
-  .setThumbnail(`${client.user.displayAvatarURL}`); // set the thumbnail in the right hand side
+  .setThumbnail(`${client.user.displayAvatarURL}`) // set the thumbnail in the right hand side
+  .setImage(info.banner) // add a banner
   message.channel.send({embed: hEmbed}); // display the embedded message
 };
 
