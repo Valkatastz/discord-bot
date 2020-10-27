@@ -60,11 +60,11 @@ function helpCommand(arguments, message) {
   .setTitle("Server Information") // Title
   .setAuthor(message.guild.name, message.guild.iconURL) // author icon and the name of it
   .setDescription(info.description) // description
-  .addField(info.fowner, info.owners + message.guild.owner, true) // delcare the field and text for owner
+  .addField(info.fowner, info.owners, true) // delcare the field and text for owner
   .addField(info.frules, info.rules, true) // decalare the field and text for rules
   .addField(info.flaw, info.handbook, true) // declare the field and text for law handbook 
-  .addField(info.flapd, info.lapdacademy, true) // declare the field and text for lapd academy
-  .addField(info.flafd, info.lafdacademy, true) // declare the field and text for lafd academy
+  .addField(info.flspd, info.lspdacademy, true) // declare the field and text for lapd academy
+  .addField(info.fems, info.emsacademy, true) // declare the field and text for lafd academy
   .addField(info.fdispatch, info.dispatch, true) // declare the field and text for dispatch
   .addField(info.frealtor, info.realtor, true) // declare the field and text for realtor
   .addField(info.fmembers, info.members + `**${message.guild.memberCount}**`, true) // decalre the field and text for members in bold
