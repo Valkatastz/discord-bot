@@ -10,7 +10,7 @@ const client = new Discord.Client({
 client.on("ready", function (exe) {
   console.log(`${client.user.username} is connected`);
   console.log(`logged in as: ${client.user.username}`);
-  console.log(client.user.setActivity("Coding Exerax Official"));
+  console.log(client.user.setActivity("Coding X Gaming RP"));
 });
 client.on("message", function (message) {
   if (message.author == client.user) {
