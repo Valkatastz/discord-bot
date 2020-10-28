@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const config = require('./config.json');
 const info = require('./info.json');
+const rules = require('./rules.json');
+const appli = require('./application.json');
 //Initialize Discord Bot
 const client = new Discord.Client({
   token: config.token,
@@ -33,6 +35,12 @@ function processCommand(message) {
     //Define the help command
     if (primaryCommand == "help") {
         helpCommand(arguments, message) // Get the function for the help command
+    }
+    if (primaryCommand == "rules") {
+      rulesCommand(arguments, message)
+    }
+    if (primaryCommand == "appli") {
+      appliCommand(arguments, message)
     }
 };
 
@@ -73,6 +81,50 @@ function helpCommand(arguments, message) {
   .setTimestamp(client.Date) // display the date in the footer
   .setThumbnail(`${client.user.displayAvatarURL}`) // set the thumbnail in the right hand side
   .setImage(info.banner) // add a banner
+  message.channel.send({embed: hEmbed}); // display the embedded message
+};
+
+function rulesCommand(arguments, message) {
+  let hEmbed = new Discord.RichEmbed() // declare the RichEmbed message function
+  .setColor(3447003) // set the color (light blue)
+  .setTitle("X Gaming Community Rules") // Title
+  .setAuthor(message.guild.name, message.guild.iconURL) // author icon and the name of it
+  .setDescription(rules.description) // description
+  .addField(rules.frdm, rules.rdm, true) // delcare the field and text for owner
+  .addField(rules.fvdm, rules.vdm, true) // decalare the field and text for rules
+  .addField(rules.finsd, rules.InsultingDiscord, true) // declare the field and text for law handbook 
+  .addField(rules.finsg, rules.InsultingInGame, true) // declare the field and text for lapd academy
+  .addField(rules.ffe, rules.ForbiddenEquipment, true) // declare the field and text for lafd academy
+  .addField(rules.fmbaa, rules.mbair, true) // declare the field and text for dispatch
+  .addField(rules.fresp, rules.respect, true) // declare the field and text for realtor
+  .addField(rules.fhumour, rules.humour, true) // declare the field and test for humour
+  .addField(rules.fchannels, rules.channels, true) // declare the field and test for channels
+  .setFooter(`${config.copyrights} • ${config.version}`, client.user.displayAvatarURL) // declare the copyrights, version of the bot and diplay the avatar in the footer
+  .setTimestamp(client.Date) // display the date in the footer
+  .setThumbnail(`${client.user.displayAvatarURL}`) // set the thumbnail in the right hand side
+  .setImage(rules.banner) // add a banner
+  message.channel.send({embed: hEmbed}); // display the embedded message
+};
+
+function appliCommand(arguments, message) {
+  let hEmbed = new Discord.RichEmbed() // declare the RichEmbed message function
+  .setColor(3447003) // set the color (light blue)
+  .setTitle("X Gaming Community Job Application") // Title
+  .setAuthor(message.guild.name, message.guild.iconURL) // author icon and the name of it
+  .setDescription(appli.description) // description
+  .addField(appli.fdep, appli.dep, true) // delcare the field and text for owner
+  .addField(appli.ffirstname, appli.firstname, true) // decalare the field and text for rules
+  .addField(appli.flastname, appli.lastname, true) // declare the field and text for law handbook 
+  .addField(appli.fdob, appli.DateofBirth, true) // declare the field and text for lapd academy
+  .addField(appli.fpe, appli.PreviousExperience, true) // declare the field and text for lafd academy
+  .addField(appli.freason, appli.Reason, true) // declare the field and text for dispatch
+  .addField(appli.fmw, appli.mirandawarning, true) // declare the field and text for realtor
+  .addField(appli.freq, appli.requirements, true) // declare the field and text for requirements
+  .addField(appli.fagree, appli.agreement, true) // declare the field and text for agreement
+  .setFooter(`${config.copyrights} • ${config.version}`, client.user.displayAvatarURL) // declare the copyrights, version of the bot and diplay the avatar in the footer
+  .setTimestamp(client.Date) // display the date in the footer
+  .setThumbnail(`${client.user.displayAvatarURL}`) // set the thumbnail in the right hand side
+  .setImage(rules.banner) // add a banner
   message.channel.send({embed: hEmbed}); // display the embedded message
 };
 

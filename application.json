@@ -1,0 +1,22 @@
+{
+    "description": "If you are willing to prove yourself worthy as an officer or medic, please follow the form below!",
+    "dep": "Los Santos Police or Los Santos Medical Services (EMS)",
+    "firstname": "Character's First Name",
+    "lastname": "Character's Last Name",
+    "DateofBirth": "Please, enter your real life Date of Birth. Otherwise you won't be a successful candidate.",
+    "PreviousExperience": "Please, state any past experience from RP or Real life you have in the related department you have applied to work for.",
+    "Reason": "What motivates you to be part of the team and represent that department? Why makes you stand and shine from others? Why do you want this position? How can you contribute?",
+    "mirandawarning": "Explain what is Miranda Warning - Only if you are applying to be part of LSPD, otherwise type N/A.",
+    "requirements": "You must be 18+ to be eligible for any of these departments",
+    "agreement": "Please state either `YES` or `NO` if you agree with the requirements and you are 18 or older.",
+    "fdep": "Department",
+    "ffirstname": "First Name",
+    "flastname": "Last Name",
+    "fdob": "Date of Birth",
+    "fpe": "Previous Experience",
+    "freason": "Reason",
+    "fmw": "Miranda Warning",
+    "freq": "Requirements",
+    "fagree": "Agreement",
+    "banner": "http://bit.ly/xgamingcommunity"
+}
