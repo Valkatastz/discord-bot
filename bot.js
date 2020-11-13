@@ -36,11 +36,14 @@ function processCommand(message) {
     if (primaryCommand == "help") {
         helpCommand(arguments, message) // Get the function for the help command
     }
-    if (primaryCommand == "rules") {
+    else if (primaryCommand == "rules") {
       rulesCommand(arguments, message)
     }
-    if (primaryCommand == "appli") {
+    else if (primaryCommand == "appli") {
       appliCommand(arguments, message)
+    }
+    else {
+      console.log("Command received: " + primaryCommand + " Incorrect Command")
     }
 };
 
